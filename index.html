@@ -1118,16 +1118,15 @@
         function downloadImage() {
             const btn = document.getElementById('btn-download');
             const originalText = btn.innerHTML;
+            
+            // Ubah teks tombol sementara
             btn.innerHTML = 'Generating...';
 
-            if(state.mode === 'whatsapp') {
-                closeReactionMode();
-                setTimeout(() => {
-                    captureAndDownload(btn, originalText);
-                }, 300);
-            } else {
+            // Beri jeda sedikit agar browser merender UI tombol sebelum capture
+            // Kita TIDAK memanggil closeReactionMode() di sini agar efek blur tetap ada
+            setTimeout(() => {
                 captureAndDownload(btn, originalText);
-            }
+            }, 100);
         }
 
         function captureAndDownload(btn, originalText) {
