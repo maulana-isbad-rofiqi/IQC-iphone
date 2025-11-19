@@ -18,7 +18,7 @@
             --danger: #ff453a;
             --wa-bubble-dark: #202c33;
             --wa-green-dark: #005c4b;
-            --ios-menu-bg: #252525; /* Warna Menu iOS Dark */
+            --ios-menu-bg: #252525;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
@@ -45,64 +45,35 @@
             border: 1px solid #333;
         }
 
-        @media (max-width: 768px) {
-            .container { flex-direction: column; height: 100vh; max-width: 100%; border-radius: 0; }
-        }
+        @media (max-width: 768px) { .container { flex-direction: column; height: 100vh; max-width: 100%; border-radius: 0; } }
 
         /* Sidebar Controls */
         .controls {
-            width: 360px;
-            background: var(--panel);
-            border-right: 1px solid var(--border);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            overflow-y: auto;
+            width: 360px; background: var(--panel); border-right: 1px solid var(--border); padding: 20px;
+            display: flex; flex-direction: column; gap: 15px; overflow-y: auto;
         }
-        @media (max-width: 768px) {
-            .controls { width: 100%; border-right: none; border-bottom: 1px solid var(--border); max-height: 40vh; }
-        }
+        @media (max-width: 768px) { .controls { width: 100%; border-right: none; border-bottom: 1px solid var(--border); max-height: 40vh; } }
 
         .header-control h1 { font-size: 20px; margin-bottom: 5px; }
         .header-control span { color: var(--accent); }
         .header-control p { font-size: 12px; color: var(--text-dim); }
-
         .tabs { display: flex; gap: 5px; background: #2c2c2e; padding: 3px; border-radius: 8px; }
         .tab-btn { flex: 1; padding: 8px; background: none; border: none; color: var(--text-dim); cursor: pointer; border-radius: 6px; font-weight: 600; font-size: 13px; }
         .tab-btn.active { background: #636366; color: #fff; }
-
         .panel-section h3, .panel h3 { font-size: 11px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; letter-spacing: 0.5px; }
         .panel { display: none; flex-direction: column; gap: 15px; }
         .panel.active { display: flex; }
-
         .input-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px; }
         .input-group label { font-size: 12px; color: var(--text-dim); }
         .input-row { display: flex; gap: 10px; align-items: center; }
-
-        input, textarea, select {
-            background: #2c2c2e;
-            border: 1px solid var(--border);
-            color: #fff;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 13px;
-            outline: none;
-            width: 100%;
-        }
+        input, textarea, select { background: #2c2c2e; border: 1px solid var(--border); color: #fff; padding: 10px; border-radius: 8px; font-size: 13px; outline: none; width: 100%; }
         input:focus { border-color: var(--accent); }
-
         .divider { height: 1px; background: var(--border); margin: 5px 0; }
-
         .btn-add { background: #3a3a3c; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: 600; width: 100%; }
         .btn-add:hover { background: #48484a; }
-
         .btn-primary { background: var(--accent); color: white; border: none; padding: 14px; border-radius: 10px; cursor: pointer; font-weight: 600; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .btn-primary:hover { opacity: 0.9; }
-
         .copyright { font-size: 11px; color: var(--text-dim); text-align: center; margin-top: 10px; }
-
-        /* Message List in Sidebar */
         .message-list { display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto; padding-right: 5px; }
         .list-item { background: #252525; padding: 8px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; border: 1px solid #333; }
         .list-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px; }
@@ -116,40 +87,23 @@
         @media (max-width: 768px) { .preview { padding: 10px; background: #1a1a1a; align-items: flex-start; } }
 
         .phone-frame {
-            width: 320px;
-            height: 693px;
-            background: #000;
-            position: relative;
-            overflow: hidden;
+            width: 320px; height: 693px; background: #000; position: relative; overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
         @media (max-width: 768px) { .phone-frame { width: 100%; max-width: 320px; height: auto; aspect-ratio: 9/19.5; } }
 
-        .status-bar {
-            position: absolute; top: 10px; width: 100%; padding: 0 25px;
-            display: flex; justify-content: space-between; color: white;
-            font-weight: 600; font-size: 15px; z-index: 998;
-        }
+        .status-bar { position: absolute; top: 10px; width: 100%; padding: 0 25px; display: flex; justify-content: space-between; color: white; font-weight: 600; font-size: 15px; z-index: 998; }
         .status-icons { display: flex; gap: 5px; align-items: center; }
         .status-icons svg { width: 18px; height: 18px; }
-        .battery {
-            width: 27px; height: 13px; border: 1.5px solid rgba(255,255,255,0.4);
-            border-radius: 3px; display: flex; align-items: center; position: relative;
-        }
+        .battery { width: 27px; height: 13px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 3px; display: flex; align-items: center; position: relative; }
         .battery-fill { background: white; height: 100%; border-radius: 1.5px; display: flex; align-items: center; justify-content: center; }
-        .battery-tip {
-            width: 2px; height: 5px; background: rgba(255,255,255,0.4);
-            position: absolute; right: -3.5px; top: 50%; transform: translateY(-50%); border-radius: 0 2px 2px 0;
-        }
-        #disp-batt-num {
-            font-size: 8px; font-weight: 600; color: #000; position: absolute;
-            left: 50%; top: 50%; transform: translate(-50%, -50%); line-height: 1; z-index: 1;
-        }
+        .battery-tip { width: 2px; height: 5px; background: rgba(255,255,255,0.4); position: absolute; right: -3.5px; top: 50%; transform: translateY(-50%); border-radius: 0 2px 2px 0; }
+        #disp-batt-num { font-size: 8px; font-weight: 600; color: #000; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); line-height: 1; z-index: 1; }
 
         .screen-content { width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: none; }
         .screen-content.active { display: block; }
 
-        /* LIGHT MODE OVERRIDES */
+        /* THEMES */
         .phone-frame.theme-light .status-bar { color: black; }
         .phone-frame.theme-light .battery { border-color: rgba(0,0,0,0.3); }
         .phone-frame.theme-light .battery-tip { background: rgba(0,0,0,0.3); }
@@ -167,21 +121,17 @@
         .phone-frame.theme-light #view-whatsapp .wa-input-mock { background: white; border: 1px solid #ccc; }
         .phone-frame.theme-light #view-whatsapp .wa-icon { stroke: #007aff; }
         .phone-frame.theme-light .home-bar { background: black; }
-        
-        /* Light Mode Reaction & Menu */
         .phone-frame.theme-light .reaction-bar, .phone-frame.theme-light .ctx-menu { background: #fff; color: black; }
         .phone-frame.theme-light .ctx-item { color: black; border-bottom: 1px solid #eee; }
         .phone-frame.theme-light .reaction-more { background: #f0f0f0; }
 
-
-        /* LOCK SCREEN */
+        /* LOCK SCREEN (Standard) */
         .ls-header { padding-top: 60px; text-align: center; color: white; display: flex; flex-direction: column; align-items: center; }
         .ls-date { font-size: 20px; font-weight: 400; margin-bottom: 5px; opacity: 0.9; }
         .ls-clock { font-size: 84px; font-weight: 600; line-height: 1; letter-spacing: -2px; }
         .ls-notification { width: 90%; margin: 20px auto; background: rgba(255,255,255,0.15); backdrop-filter: blur(25px); border-radius: 18px; padding: 12px 15px; }
         .notif-top { display: flex; align-items: center; margin-bottom: 8px; }
         .notif-icon { width: 20px; height: 20px; background: #34c759; border-radius: 5px; padding: 3px; margin-right: 8px; display: flex; align-items: center; justify-content: center; }
-        .notif-icon-whatsapp { background: #25D366; }
         .notif-icon svg { display: block; width: 100%; height: 100%; }
         .notif-app { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8); flex: 1; }
         .notif-ago { font-size: 12px; color: rgba(255,255,255,0.6); }
@@ -192,13 +142,8 @@
         .circle-btn svg { width: 24px; height: 24px; }
         .ls-name-display { font-size: 14px; font-weight: 500; color: white; text-align: center; flex: 1; max-width: 150px; }
 
-        /* WHATSAPP */
-        .wa-header {
-            position: absolute; top: 0; width: 100%; height: 105px;
-            background: rgba(22, 28, 33, 0.95); backdrop-filter: blur(20px);
-            display: flex; align-items: flex-end; padding: 10px 12px;
-            border-bottom: 1px solid #232d36; z-index: 90;
-        }
+        /* WHATSAPP ELEMENTS */
+        .wa-header { position: absolute; top: 0; width: 100%; height: 105px; background: rgba(22, 28, 33, 0.95); backdrop-filter: blur(20px); display: flex; align-items: flex-end; padding: 10px 12px; border-bottom: 1px solid #232d36; z-index: 90; }
         .wa-back-btn { display: flex; align-items: center; color: var(--accent); font-size: 17px; gap: 5px; margin-right: 5px; margin-bottom: 8px; font-weight: 400; }
         .wa-back-btn svg { width: 24px; height: 24px; stroke-width: 2.5; }
         .wa-profile { flex: 1; display: flex; align-items: center; gap: 10px; margin-bottom: 6px; padding-left: 5px; }
@@ -211,91 +156,73 @@
         .wa-chat-container { padding: 115px 16px 90px 16px; height: 100%; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; }
 
         /* BUBBLES */
-        .bubble {
-            max-width: 78%; padding: 6px 12px 8px 12px; border-radius: 16px; font-size: 16px;
-            position: relative; line-height: 1.35; color: white; word-wrap: break-word; margin-bottom: 8px;
-            box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
-        }
+        .bubble { max-width: 78%; padding: 6px 12px 8px 12px; border-radius: 16px; font-size: 16px; position: relative; line-height: 1.35; color: white; word-wrap: break-word; margin-bottom: 8px; box-shadow: 0 1px 0.5px rgba(0,0,0,0.13); }
         .bubble-left { align-self: flex-start; background: var(--wa-bubble-dark); border-top-left-radius: 2px; margin-left: 8px; }
-        .bubble-left::before {
-            content: ""; position: absolute; top: 0; left: -8px; width: 12px; height: 20px;
-            background: radial-gradient(circle at 0 0, transparent 0, transparent 11px, var(--wa-bubble-dark) 11px);
-            clip-path: polygon(0 0, 100% 0, 100% 100%);
-        }
+        .bubble-left::before { content: ""; position: absolute; top: 0; left: -8px; width: 12px; height: 20px; background: radial-gradient(circle at 0 0, transparent 0, transparent 11px, var(--wa-bubble-dark) 11px); clip-path: polygon(0 0, 100% 0, 100% 100%); }
         .bubble-right { align-self: flex-end; background: var(--wa-green-dark); border-top-right-radius: 2px; margin-right: 8px; }
-        .bubble-right::after {
-            content: ""; position: absolute; top: 0; right: -8px; width: 8px; height: 13px;
-            background: var(--wa-green-dark); border-bottom-left-radius: 20px; z-index: -1;
-        }
+        .bubble-right::after { content: ""; position: absolute; top: 0; right: -8px; width: 8px; height: 13px; background: var(--wa-green-dark); border-bottom-left-radius: 20px; z-index: -1; }
         .bubble-meta { display: flex; justify-content: flex-end; align-items: center; gap: 4px; margin-top: 2px; margin-bottom: -3px; margin-right: -4px; float: right; margin-left: 8px; padding-top: 6px; }
         .bubble-time { font-size: 11px; color: rgba(255,255,255,0.6); }
         .bubble-check svg { width: 16px; height: 16px; display: block; }
 
-        /* --- LONG PRESS EFFECT (FOKUS & BLUR SIMULATION) --- */
+        /* --- REACTION & MENU STYLE (EXACT IPHONE MATCH) --- */
         
-        /* Overlay GELAP TEGAS (Pengganti Blur) - Opacity 75% */
+        /* Dark Overlay (Simulasi Fokus/Blur untuk html2canvas) */
         .wa-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.75); /* KUNCI EFEK FOKUS DI HTML2CANVAS */
-            opacity: 0; pointer-events: none; transition: opacity 0.2s;
-            z-index: 200;
+            background: rgba(0, 0, 0, 0.75); /* Hitam transparan agar bubble sorot terlihat */
+            opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 200;
         }
         .wa-overlay.active { opacity: 1; pointer-events: auto; }
 
-        /* Highlight Bubble */
+        /* Highlight Bubble (Focus) */
         .bubble.active-press {
             z-index: 201;
             transform: scale(1.01);
-            transition: transform 0.2s;
-            /* Hilangkan shadow agar menyatu dengan gelapnya overlay */
-            box-shadow: none; 
+            box-shadow: none; /* Hilangkan shadow agar menyatu */
         }
 
-        /* Reaction Bar - SOLID COLOR */
+        /* REACTION BAR */
         .reaction-bar {
-            position: absolute; height: 45px;
-            background: var(--ios-menu-bg); /* Solid Dark Grey */
-            border-radius: 12px; /* iOS style */
-            display: flex; align-items: center; padding: 0 10px; gap: 6px;
-            z-index: 202;
-            animation: popIn 0.2s cubic-bezier(0.17, 0.84, 0.44, 1);
+            position: absolute; height: 48px;
+            background: var(--ios-menu-bg);
+            border-radius: 24px;
+            display: flex; align-items: center; padding: 0 12px; gap: 4px;
+            z-index: 202; animation: popIn 0.2s cubic-bezier(0.17, 0.84, 0.44, 1);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        /* Emoji Text Besar */
+        /* Emoji Image Style */
         .reaction { 
-            font-size: 28px; line-height: 1; cursor: pointer; transition: 0.2s; user-select: none;
+            width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; 
+            cursor: pointer; transition: 0.2s; 
         }
+        .reaction img { width: 100%; height: 100%; display: block; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2)); }
         .reaction:hover { transform: scale(1.2); }
-        .reaction-more { 
-            background: rgba(255,255,255,0.2); border-radius: 50%; width: 30px; height: 30px; 
-            display: flex; align-items: center; justify-content: center; margin-left: 5px;
-        }
-        .reaction-more svg { width: 18px; height: 18px; opacity: 0.8; fill: #fff; }
 
-        /* Context Menu - SOLID COLOR & EXACT LIST */
+        .reaction-more { 
+            width: 32px; height: 32px; border-radius: 50%; background: #3a3a3a;
+            display: flex; align-items: center; justify-content: center; margin-left: 4px;
+        }
+        .reaction-more svg { width: 20px; height: 20px; fill: #8e8e93; }
+
+        /* CONTEXT MENU */
         .ctx-menu {
             position: absolute; width: 220px;
-            background: var(--ios-menu-bg); /* Solid Dark Grey */
-            border-radius: 14px;
-            z-index: 202; overflow: hidden;
+            background: var(--ios-menu-bg);
+            border-radius: 14px; z-index: 202; overflow: hidden;
             animation: fadeUp 0.2s ease;
             box-shadow: 0 10px 40px rgba(0,0,0,0.6);
         }
         .ctx-item {
-            padding: 14px 16px; color: white; font-size: 15px; font-weight: 400;
+            padding: 14px 16px; color: white; font-size: 16px; font-weight: 400;
             display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.12); /* Separator */
-            background: transparent;
+            border-bottom: 1px solid rgba(255,255,255,0.12); background: transparent;
         }
         .ctx-item:last-child { border-bottom: none; }
         .ctx-item.danger { color: var(--danger); }
         .ctx-item svg { width: 18px; height: 18px; opacity: 1; stroke-width: 1.5; stroke: currentColor; fill: none; }
-        .ctx-item .icon-fill { fill: currentColor; stroke: none; } /* For specific filled icons */
 
-        .wa-footer {
-            position: absolute; bottom: 0; width: 100%; height: 80px;
-            background: #1f2c34; display: flex; align-items: flex-start; padding: 12px 15px; gap: 15px; z-index: 91;
-        }
+        .wa-footer { position: absolute; bottom: 0; width: 100%; height: 80px; background: #1f2c34; display: flex; align-items: flex-start; padding: 12px 15px; gap: 15px; z-index: 91; }
         .wa-input-mock { flex: 1; height: 35px; background: #2c3e50; border-radius: 18px; }
         .wa-icon { width: 26px; height: 26px; margin-top: 4px; }
         .home-bar { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 120px; height: 5px; background: white; border-radius: 3px; z-index: 999; }
@@ -312,162 +239,73 @@
                 <h1>IQC <span>iPhone</span></h1>
                 <p>Generator Mockup Pro</p>
             </div>
-
             <div class="tabs">
                 <button class="tab-btn active" onclick="switchTab('lockscreen')">Lock Screen</button>
                 <button class="tab-btn" onclick="switchTab('whatsapp')">WhatsApp</button>
             </div>
-
             <div class="panel-section">
                 <h3>Status Bar</h3>
-                <div class="input-row">
-                    <input type="time" id="sys-time" value="09:41">
-                    <div class="battery-control">
-                        <input type="number" id="sys-battery" min="1" max="100" value="100" placeholder="%">
-                        <span>%</span>
-                    </div>
-                </div>
+                <div class="input-row"><input type="time" id="sys-time" value="09:41"><div class="battery-control"><input type="number" id="sys-battery" min="1" max="100" value="100" placeholder="%"><span>%</span></div></div>
             </div>
-
-             <div class="panel-section">
+            <div class="panel-section">
                 <h3>Tema Tampilan</h3>
-                <select id="sys-theme">
-                    <option value="dark">Mode Gelap (Dark)</option>
-                    <option value="light">Mode Terang (Light)</option>
-                </select>
+                <select id="sys-theme"><option value="dark">Mode Gelap (Dark)</option><option value="light">Mode Terang (Light)</option></select>
             </div>
 
             <div id="panel-lockscreen" class="panel active">
                 <h3>Konten Lock Screen</h3>
-                <div class="input-group">
-                    <label>Nama</label>
-                    <input type="text" id="ls-operator" value="" placeholder="Masukkan nama Anda">
-                </div>
-                <div class="input-group">
-                    <label>Tanggal</label>
-                    <input type="text" id="ls-date" value="Senin, 1 Januari">
-                </div>
+                <div class="input-group"><label>Nama</label><input type="text" id="ls-operator" placeholder="Nama Anda"></div>
+                <div class="input-group"><label>Tanggal</label><input type="text" id="ls-date" value="Senin, 1 Januari"></div>
                 <div class="divider"></div>
                 <h3>Wallpaper</h3>
-                <div class="input-group">
-                    <label>Pilih Wallpaper</label>
-                    <select id="ls-wallpaper">
-                        <option value="gradient1">Gradient Biru-Hitam</option>
-                        <option value="gradient2">Gradient Ungu-Pink</option>
-                        <option value="gradient3">Gradient Hijau-Biru</option>
-                        <option value="gradient4">Gradient Oranye-Merah</option>
-                        <option value="custom">Upload Gambar</option>
-                    </select>
-                </div>
-                <div class="input-group" id="wallpaper-upload-group" style="display:none;">
-                    <label>Upload Wallpaper</label>
-                    <input type="file" id="ls-wallpaper-input" accept="image/*">
-                </div>
+                <div class="input-group"><select id="ls-wallpaper"><option value="gradient1">Gradient Biru-Hitam</option><option value="custom">Upload Gambar</option></select></div>
+                <div class="input-group" id="wallpaper-upload-group" style="display:none;"><input type="file" id="ls-wallpaper-input" accept="image/*"></div>
                 <div class="divider"></div>
-                <h3>Notifikasi</h3>
-                <div class="input-group">
-                    <label>Pengirim</label>
-                    <input type="text" id="ls-sender" value="Sayang">
-                </div>
-                <div class="input-group">
-                    <label>Pesan</label>
-                    <textarea id="ls-message" rows="2">Kangen kamu, jangan lupa makan ya!</textarea>
-                </div>
-                <div class="input-group">
-                    <label>Waktu Notif</label>
-                    <input type="text" id="ls-time-ago" value="Baru saja">
-                </div>
+                <div class="input-group"><label>Pesan Notif</label><textarea id="ls-message" rows="2">Kangen kamu...</textarea></div>
             </div>
 
             <div id="panel-whatsapp" class="panel">
-                <h3>Profil Kontak</h3>
-                <div class="input-group">
-                    <label>Nama Kontak</label>
-                    <input type="text" id="wa-name" value="Sayang">
-                </div>
-                <div class="input-group">
-                    <label>Status (Online/Typing)</label>
-                    <input type="text" id="wa-status" value="Online">
-                </div>
-                <div class="input-group">
-                    <label>Foto Profil</label>
-                    <input type="file" id="wa-avatar-input" accept="image/*">
-                </div>
-
+                <h3>Profil</h3>
+                <div class="input-group"><label>Nama</label><input type="text" id="wa-name" value="Sayang"></div>
+                <div class="input-group"><label>Status</label><input type="text" id="wa-status" value="Online"></div>
+                <div class="input-group"><label>Foto</label><input type="file" id="wa-avatar-input" accept="image/*"></div>
                 <div class="divider"></div>
-                <h3>Tambah Chat</h3>
-                <div class="input-group">
-                    <textarea id="wa-input-msg" rows="2" placeholder="Ketik pesan..."></textarea>
-                </div>
+                <h3>Chat</h3>
+                <div class="input-group"><textarea id="wa-input-msg" rows="2" placeholder="Pesan..."></textarea></div>
                 <div class="input-row">
                     <input type="time" id="wa-input-time" value="09:41">
-                    <select id="wa-input-pos">
-                        <option value="left">Kiri (Diterima)</option>
-                        <option value="right">Kanan (Terkirim)</option>
-                    </select>
+                    <select id="wa-input-pos"><option value="left">Kiri</option><option value="right">Kanan</option></select>
                 </div>
                 <div class="input-group" id="wa-check-group" style="display:none;">
-                    <label>Status Centang</label>
-                    <select id="wa-input-check">
-                        <option value="none">Tidak Ada</option>
-                        <option value="sent">Centang 1 (Abu)</option>
-                        <option value="delivered">Centang 2 (Abu)</option>
-                        <option value="read">Centang 2 (Biru)</option>
-                    </select>
+                    <select id="wa-input-check"><option value="read">Centang Biru</option><option value="delivered">Centang Abu</option></select>
                 </div>
-                <button class="btn-add" onclick="addMessage()">Tambah Pesan</button>
-
+                <button class="btn-add" onclick="addMessage()">Kirim</button>
                 <div class="divider"></div>
                 <h3>Daftar Pesan</h3>
-                <p class="hint">Klik ikon 👆 untuk mengaktifkan efek "Tekan Tahan".</p>
+                <p class="hint">Klik 👆 untuk menu iPhone.</p>
                 <div id="message-list" class="message-list"></div>
             </div>
 
             <div class="footer-control">
-                <button id="btn-download" class="btn-primary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    Download Gambar
-                </button>
-                <div class="copyright">&copy; 2025 IQC iPhone - Dibuat oleh 【 𝕀𝕥𝕤𝕓𝕒𝕕 】</div>
+                <button id="btn-download" class="btn-primary">Download Gambar</button>
+                <div class="copyright">&copy; 2025 IQC iPhone</div>
             </div>
         </aside>
 
         <main class="preview">
             <div class="phone-frame" id="capture-area">
                 <div class="status-bar">
-                    <div class="time" id="disp-sys-time">09:41</div>
-                    <div class="dynamic-island"></div>
+                    <div class="time" id="disp-sys-time">09:41</div><div class="dynamic-island"></div>
                     <div class="status-icons">
-                        <svg class="icon-signal" viewBox="0 0 24 24" fill="currentColor"><path d="M17,7H22V20H17V7M10,13H15V20H10V13M3,16H8V20H3V16Z"/></svg>
-                        <svg class="icon-wifi" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-                        <div class="battery">
-                            <div class="battery-fill" id="disp-sys-battery" style="width:100%"><span id="disp-batt-num">100</span></div>
-                            <div class="battery-tip"></div>
-                        </div>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17,7H22V20H17V7M10,13H15V20H10V13M3,16H8V20H3V16Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                        <div class="battery"><div class="battery-fill" id="disp-sys-battery" style="width:100%"></div><div class="battery-tip"></div></div>
+                        <span id="disp-batt-num" style="margin-left:4px;font-size:12px;">100</span>
                     </div>
                 </div>
 
-                <div id="view-lockscreen" class="screen-content active" style="background: linear-gradient(180deg, #2c3e50 0%, #000 100%);">
-                    <div class="ls-header">
-                        <div class="ls-date" id="disp-ls-date">Senin, 1 Januari</div>
-                        <div class="ls-clock" id="disp-ls-clock">09:41</div>
-                    </div>
-                    <div class="ls-notification">
-                        <div class="notif-top">
-                            <div class="notif-icon notif-icon-whatsapp"><svg viewBox="0 0 32 32" fill="white"><path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.738 5.477 2.028 7.772L.698 30.5l7.033-1.845A15.93 15.93 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333c-2.455 0-4.763-.664-6.745-1.82l-.483-.287-5.01 1.314 1.338-4.888-.315-.5A13.27 13.27 0 012.667 16c0-7.364 5.97-13.333 13.333-13.333S29.333 8.636 29.333 16 23.364 29.333 16 29.333z"/><path d="M23.197 19.803c-.36-.18-2.13-1.05-2.46-1.17-.33-.12-.57-.18-.81.18-.24.36-.93 1.17-1.14 1.41-.21.24-.42.27-.78.09-.36-.18-1.52-.56-2.89-1.78-1.07-.95-1.79-2.13-2-2.49-.21-.36-.02-.55.16-.73.16-.16.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.81-1.95-1.11-2.67-.29-.7-.59-.6-.81-.61-.21-.01-.45-.01-.69-.01-.24 0-.63.09-.96.45-.33.36-1.26 1.23-1.26 3 0 1.77 1.29 3.48 1.47 3.72.18.24 2.54 3.88 6.15 5.44.86.37 1.53.59 2.05.76.86.27 1.65.23 2.27.14.69-.1 2.13-.87 2.43-1.71.3-.84.3-1.56.21-1.71-.09-.15-.33-.24-.69-.42z"/></svg></div>
-                            <span class="notif-app">WhatsApp</span>
-                            <span class="notif-ago" id="disp-ls-time-ago">Baru saja</span>
-                        </div>
-                        <div class="notif-body">
-                            <strong id="disp-ls-sender">Sayang</strong>
-                            <p id="disp-ls-message">Kangen kamu, jangan lupa makan ya!</p>
-                        </div>
-                    </div>
-                    <div class="ls-footer-actions">
-                        <div class="circle-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zm0 2c2.76 0 5 2.24 5 5 0 1.63-.8 3.16-2.15 4.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5zm-1 15h2v1c0 .55-.45 1-1 1s-1-.45-1-1v-1z"/></svg></div>
-                        <div class="ls-name-display" id="disp-ls-operator"></div>
-                        <div class="circle-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg></div>
-                    </div>
+                <div id="view-lockscreen" class="screen-content active" style="background: #000;">
+                    <div class="ls-header"><div class="ls-clock" id="disp-ls-clock">09:41</div><div id="disp-ls-date">Senin, 1 Jan</div></div>
                     <div class="home-bar"></div>
                 </div>
 
@@ -475,27 +313,17 @@
                     <div class="wa-header">
                         <div class="wa-back-btn"><svg viewBox="0 0 24 24" fill="#0a84ff"><path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/></svg><span>9</span></div>
                         <div class="wa-profile">
-                            <div class="wa-pp">
-                                <img id="disp-wa-avatar" src="" style="display:none; width:100%; height:100%; object-fit:cover;">
-                                <div id="disp-wa-avatar-default" class="default-pp"><svg viewBox="0 0 24 24" fill="#ccc"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
-                            </div>
+                            <div class="wa-pp"><img id="disp-wa-avatar" src="" style="display:none; width:100%; height:100%; object-fit:cover;"></div>
                             <div class="wa-info"><div class="wa-name" id="disp-wa-name">Sayang</div><div class="wa-status" id="disp-wa-status">Online</div></div>
                         </div>
-                        <div class="wa-calls">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#0a84ff" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#0a84ff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        </div>
                     </div>
-
                     <div class="wa-chat-container" id="wa-chat-list"></div>
-
                     <div class="wa-footer">
-                        <svg class="wa-icon" viewBox="0 0 24 24" fill="none" stroke="#0a84ff" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+                        <svg class="wa-icon" viewBox="0 0 24 24" stroke="#0a84ff"><path d="M12 5v14M5 12h14" stroke-width="1.5"/></svg>
                         <div class="wa-input-mock"></div>
-                        <svg class="wa-icon" viewBox="0 0 24 24" fill="none" stroke="#0a84ff" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                        <svg class="wa-icon" viewBox="0 0 24 24" fill="none" stroke="#0a84ff" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                        <svg class="wa-icon" viewBox="0 0 24 24" stroke="#0a84ff"><circle cx="12" cy="12" r="9" stroke-width="1.5"/></svg>
+                        <svg class="wa-icon" viewBox="0 0 24 24" stroke="#0a84ff"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" stroke-width="1.5"/></svg>
                     </div>
-
                     <div class="home-bar"></div>
                     <div id="wa-overlay" class="wa-overlay"></div>
                 </div>
@@ -506,119 +334,99 @@
     <script>
         const state = { messages: [], mode: 'lockscreen' };
         const els = {
-            sysTime: document.getElementById('sys-time'), sysBatt: document.getElementById('sys-battery'), sysTheme: document.getElementById('sys-theme'),
-            dispSysTime: document.getElementById('disp-sys-time'), dispSysBatt: document.getElementById('disp-sys-battery'),
-            panelLock: document.getElementById('panel-lockscreen'), panelWa: document.getElementById('panel-whatsapp'),
-            viewLock: document.getElementById('view-lockscreen'), viewWa: document.getElementById('view-whatsapp'),
-            lsOp: document.getElementById('ls-operator'), lsDate: document.getElementById('ls-date'), lsSender: document.getElementById('ls-sender'),
-            lsMsg: document.getElementById('ls-message'), lsTimeAgo: document.getElementById('ls-time-ago'),
-            dispLsOp: document.getElementById('disp-ls-operator'), dispLsDate: document.getElementById('disp-ls-date'), dispLsSender: document.getElementById('disp-ls-sender'),
-            dispLsMsg: document.getElementById('disp-ls-message'), dispLsTimeAgo: document.getElementById('disp-ls-time-ago'), dispLsClock: document.getElementById('disp-ls-clock'),
-            waName: document.getElementById('wa-name'), waStatus: document.getElementById('wa-status'), waAvatarIn: document.getElementById('wa-avatar-input'),
-            waInMsg: document.getElementById('wa-input-msg'), waInTime: document.getElementById('wa-input-time'), waInPos: document.getElementById('wa-input-pos'),
-            waInCheck: document.getElementById('wa-input-check'), waCheckGroup: document.getElementById('wa-check-group'),
-            dispWaName: document.getElementById('disp-wa-name'), dispWaStatus: document.getElementById('disp-wa-status'), dispWaAvatar: document.getElementById('disp-wa-avatar'),
-            dispWaDefault: document.getElementById('disp-wa-avatar-default'), waChatList: document.getElementById('wa-chat-list'), msgList: document.getElementById('message-list'),
-            overlay: document.getElementById('wa-overlay')
+            sysTime: document.getElementById('sys-time'), waChatList: document.getElementById('wa-chat-list'), overlay: document.getElementById('wa-overlay')
         };
 
+        // URL Emojis Apple (CDN)
+        const emojis = [
+            'https://em-content.zobj.net/source/apple/391/thumbs-up_1f44d.png',
+            'https://em-content.zobj.net/source/apple/391/red-heart_2764-fe0f.png',
+            'https://em-content.zobj.net/source/apple/391/face-with-tears-of-joy_1f602.png',
+            'https://em-content.zobj.net/source/apple/391/face-with-open-mouth_1f62e.png',
+            'https://em-content.zobj.net/source/apple/391/crying-face_1f622.png',
+            'https://em-content.zobj.net/source/apple/391/folded-hands_1f64f.png'
+        ];
+
         function init() {
-            els.sysTime.addEventListener('input', updateTime); els.sysBatt.addEventListener('input', updateBattery); els.sysTheme.addEventListener('change', updateTheme);
-            els.lsOp.addEventListener('input', (e) => els.dispLsOp.textContent = e.target.value); els.lsDate.addEventListener('input', (e) => els.dispLsDate.textContent = e.target.value);
-            els.lsSender.addEventListener('input', (e) => els.dispLsSender.textContent = e.target.value); els.lsMsg.addEventListener('input', (e) => els.dispLsMsg.textContent = e.target.value);
-            els.lsTimeAgo.addEventListener('input', (e) => els.dispLsTimeAgo.textContent = e.target.value);
-            document.getElementById('ls-wallpaper').addEventListener('change', handleWallpaperChange); document.getElementById('ls-wallpaper-input').addEventListener('change', handleWallpaperUpload);
-            els.waName.addEventListener('input', (e) => els.dispWaName.textContent = e.target.value); els.waStatus.addEventListener('input', (e) => els.dispWaStatus.textContent = e.target.value);
-            els.waAvatarIn.addEventListener('change', handleAvatarUpload);
-            els.waInPos.addEventListener('change', (e) => { els.waCheckGroup.style.display = e.target.value === 'right' ? 'flex' : 'none'; });
+            els.sysTime.addEventListener('input', (e) => { 
+                document.querySelectorAll('#disp-sys-time, #disp-ls-clock').forEach(el => el.textContent = e.target.value); 
+            });
+            document.getElementById('wa-input-pos').addEventListener('change', (e) => {
+                document.getElementById('wa-check-group').style.display = e.target.value === 'right' ? 'flex' : 'none';
+            });
             els.overlay.addEventListener('click', closeReactionMode);
             document.getElementById('btn-download').addEventListener('click', downloadImage);
+            
+            // Init tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-btn, .panel, .screen-content').forEach(el => el.classList.remove('active'));
+                e.target.classList.add('active');
+                const mode = e.target.textContent.includes('Lock') ? 'lockscreen' : 'whatsapp';
+                document.getElementById(`panel-${mode}`).classList.add('active');
+                document.getElementById(`view-${mode}`).classList.add('active');
+            }));
         }
-
-        function switchTab(mode) {
-            state.mode = mode;
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); event.target.classList.add('active');
-            els.panelLock.classList.remove('active'); els.panelWa.classList.remove('active');
-            els.viewLock.classList.remove('active'); els.viewWa.classList.remove('active');
-            if (mode === 'lockscreen') { els.panelLock.classList.add('active'); els.viewLock.classList.add('active'); }
-            else { els.panelWa.classList.add('active'); els.viewWa.classList.add('active'); }
-        }
-
-        function updateTime(e) { els.dispSysTime.textContent = e.target.value; els.dispLsClock.textContent = e.target.value; }
-        function updateBattery(e) {
-            let val = parseInt(e.target.value) || 100; if(val>100)val=100; if(val<0)val=0;
-            document.getElementById('disp-batt-num').textContent = val; els.dispSysBatt.style.width = val + '%';
-            els.dispSysBatt.style.background = val <= 20 ? '#ff453a' : 'white';
-            const isLight = document.querySelector('.phone-frame').classList.contains('theme-light');
-            document.getElementById('disp-batt-num').style.color = (val <= 20) ? '#fff' : (isLight && val > 20 ? '#fff' : '#000');
-            if(isLight && val > 20) els.dispSysBatt.style.background = 'black';
-            else if(!isLight && val > 20) els.dispSysBatt.style.background = 'white';
-        }
-        function updateTheme(e) {
-            const theme = e.target.value; const phone = document.querySelector('.phone-frame');
-            const waView = document.getElementById('view-whatsapp'); const battFill = els.dispSysBatt;
-            const currentBattVal = parseInt(els.sysBatt.value) || 100;
-            if(theme === 'light') { phone.classList.add('theme-light'); waView.style.background = '#e4ddd6'; if(currentBattVal > 20) battFill.style.background = 'black'; }
-            else { phone.classList.remove('theme-light'); waView.style.background = '#0b141a'; if(currentBattVal > 20) battFill.style.background = 'white'; }
-        }
-
-        function handleWallpaperChange(e) {
-            const val = e.target.value; const up = document.getElementById('wallpaper-upload-group'); const view = document.getElementById('view-lockscreen');
-            if(val==='custom') up.style.display='flex'; else { up.style.display='none'; view.style.backgroundImage=''; view.style.background = getGradient(val); }
-        }
-        function getGradient(v) {
-            const g = { gradient1: 'linear-gradient(180deg, #2c3e50 0%, #000 100%)', gradient2: 'linear-gradient(180deg, #667eea 0%, #764ba2 100%)', gradient3: 'linear-gradient(180deg, #11998e 0%, #38ef7d 100%)', gradient4: 'linear-gradient(180deg, #ee0979 0%, #ff6a00 100%)' };
-            return g[v] || g.gradient1;
-        }
-        function handleWallpaperUpload(e) {
-            const f = e.target.files[0]; if(f) { const r = new FileReader(); r.onload = (ev) => { document.getElementById('view-lockscreen').style.backgroundImage = `url(${ev.target.result})`; document.getElementById('view-lockscreen').style.backgroundSize = 'cover'; }; r.readAsDataURL(f); }
-        }
-        function handleAvatarUpload(e) { const f=e.target.files[0]; if(f){const r=new FileReader(); r.onload=(ev)=>{els.dispWaAvatar.src=ev.target.result; els.dispWaAvatar.style.display='block'; els.dispWaDefault.style.display='none';}; r.readAsDataURL(f);} }
 
         function addMessage() {
-            const txt = els.waInMsg.value; if(!txt) return;
-            state.messages.push({ id: Date.now(), text: txt, time: els.waInTime.value, pos: els.waInPos.value, check: els.waInCheck.value });
-            renderMessages(); renderSidebarList(); els.waInMsg.value = '';
+            const txt = document.getElementById('wa-input-msg').value;
+            if(!txt) return;
+            state.messages.push({ 
+                id: Date.now(), text: txt, 
+                time: document.getElementById('wa-input-time').value, 
+                pos: document.getElementById('wa-input-pos').value,
+                check: document.getElementById('wa-input-check').value 
+            });
+            renderMessages();
+            document.getElementById('wa-input-msg').value = '';
         }
-        function deleteMessage(id) { state.messages = state.messages.filter(m => m.id !== id); renderMessages(); renderSidebarList(); closeReactionMode(); }
 
         function renderMessages() {
             els.waChatList.innerHTML = '';
+            const listSide = document.getElementById('message-list');
+            listSide.innerHTML = '';
+
             state.messages.forEach(msg => {
+                // Render Sidebar Item
+                const li = document.createElement('div'); li.className = 'list-item';
+                li.innerHTML = `<div class="list-text">${msg.text}</div><div class="list-actions"><button class="btn-icon" onclick="activateReactionMode(${msg.id})">👆</button><button class="btn-icon btn-del" onclick="deleteMsg(${msg.id})">✕</button></div>`;
+                listSide.appendChild(li);
+
+                // Render Bubble
                 const b = document.createElement('div'); b.className = `bubble bubble-${msg.pos}`; b.id = `msg-${msg.id}`;
                 let chk = '';
-                if(msg.pos === 'right' && msg.check !== 'none') {
-                    const isL = document.querySelector('.phone-frame').classList.contains('theme-light');
-                    const c = msg.check === 'read' ? '#53bdeb' : '#8696a0';
-                    if(msg.check === 'sent') chk = `<svg viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
-                    else chk = `<div style="position:relative; width:16px; height:11px;"><svg viewBox="0 0 24 24" stroke="${c}" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="position:absolute; right:0; top:0; width:16px; height:16px;"><polyline points="20 6 9 17 4 12"></polyline></svg><svg viewBox="0 0 24 24" stroke="${c}" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="position:absolute; right:-5px; top:0; width:16px; height:16px;"><polyline points="20 6 9 17 4 12"></polyline></svg></div>`;
+                if(msg.pos === 'right') {
+                    const color = msg.check === 'read' ? '#53bdeb' : '#8696a0';
+                    chk = `<svg viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg>`;
                 }
-                b.innerHTML = `${msg.text.replace(/\n/g, '<br>')}<div class="bubble-meta"><span class="bubble-time">${msg.time}</span><div class="bubble-check">${chk}</div></div>`;
+                b.innerHTML = `${msg.text}<div class="bubble-meta"><span class="bubble-time">${msg.time}</span><div class="bubble-check">${chk}</div></div>`;
                 els.waChatList.appendChild(b);
-            });
-            if(!els.overlay.classList.contains('active')) els.waChatList.scrollTop = els.waChatList.scrollHeight;
-        }
-        function renderSidebarList() {
-            els.msgList.innerHTML = '';
-            state.messages.forEach(msg => {
-                const i = document.createElement('div'); i.className = 'list-item';
-                i.innerHTML = `<div class="list-text"><b>[${msg.pos}]</b> ${msg.text}</div><div class="list-actions"><button class="btn-icon" onclick="activateReactionMode(${msg.id})">👆</button><button class="btn-icon btn-del" onclick="deleteMessage(${msg.id})">✕</button></div>`;
-                els.msgList.appendChild(i);
             });
         }
 
-        function activateReactionMode(id) {
+        window.deleteMsg = (id) => { state.messages = state.messages.filter(m => m.id !== id); renderMessages(); closeReactionMode(); };
+
+        window.activateReactionMode = (id) => {
             closeReactionMode();
             const b = document.getElementById(`msg-${id}`); if(!b) return;
             els.overlay.classList.add('active'); b.classList.add('active-press');
-            const top = b.offsetTop; const height = b.offsetHeight; const isRight = b.classList.contains('bubble-right');
+            
+            const top = b.offsetTop;
+            const isRight = b.classList.contains('bubble-right');
 
+            // INJECT REACTION BAR (IMAGES)
             const r = document.createElement('div'); r.className = 'reaction-bar temp-ui';
-            r.innerHTML = `<div class="reaction">👍</div><div class="reaction">❤️</div><div class="reaction">😂</div><div class="reaction">😮</div><div class="reaction">😢</div><div class="reaction">🙏</div><div class="reaction reaction-more"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.5"/><path d="M12 7v10M7 12h10" stroke="#000" stroke-width="2" stroke-linecap="round"/></svg></div>`;
-            r.style.top = (top - 50) + 'px';
-            if(isRight) { r.style.right = '15px'; r.style.transformOrigin = 'bottom right'; } else { r.style.left = '15px'; r.style.transformOrigin = 'bottom left'; }
+            // Loop emoji images
+            let htmlEmojis = '';
+            emojis.forEach(url => htmlEmojis += `<div class="reaction"><img src="${url}"></div>`);
+            
+            r.innerHTML = htmlEmojis + `<div class="reaction reaction-more"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>`;
+            
+            r.style.top = (top - 55) + 'px';
+            if(isRight) { r.style.right = '15px'; r.style.transformOrigin = 'bottom right'; } 
+            else { r.style.left = '15px'; r.style.transformOrigin = 'bottom left'; }
             els.waChatList.appendChild(r);
 
+            // INJECT MENU (EXACT IOS TEXT & ICONS)
             const m = document.createElement('div'); m.className = 'ctx-menu temp-ui';
             m.innerHTML = `
                 <div class="ctx-item">Balas <svg viewBox="0 0 24 24"><path d="M9 14L4 9l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9h10c4 0 7 3 7 7v1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -628,8 +436,9 @@
                 <div class="ctx-item danger">Hapus <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
                 <div class="ctx-item">Lainnya... <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="19" cy="12" r="1" fill="currentColor"/><circle cx="5" cy="12" r="1" fill="currentColor"/></svg></div>
             `;
-            m.style.top = (top + height + 8) + 'px';
-            if(isRight) { m.style.right = '15px'; m.style.transformOrigin = 'top right'; } else { m.style.left = '15px'; m.style.transformOrigin = 'top left'; }
+            m.style.top = (top + b.offsetHeight + 10) + 'px';
+            if(isRight) { m.style.right = '15px'; m.style.transformOrigin = 'top right'; } 
+            else { m.style.left = '15px'; m.style.transformOrigin = 'top left'; }
             els.waChatList.appendChild(m);
         }
 
@@ -641,18 +450,21 @@
 
         function downloadImage() {
             const btn = document.getElementById('btn-download');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = 'Generating...';
+            const txt = btn.innerText;
+            btn.innerText = 'Memproses...';
             setTimeout(() => {
-                html2canvas(document.getElementById('capture-area'), { scale: 2, backgroundColor: null, useCORS: true, allowTaint: true }).then(canvas => {
-                    const link = document.createElement('a'); link.download = 'IQC-iPhone-' + Date.now() + '.png';
-                    link.href = canvas.toDataURL("image/png"); link.click(); btn.innerHTML = originalText;
+                html2canvas(document.getElementById('capture-area'), { 
+                    scale: 2, backgroundColor: null, useCORS: true 
+                }).then(canvas => {
+                    const a = document.createElement('a');
+                    a.download = 'IQC-iPhone.png';
+                    a.href = canvas.toDataURL("image/png");
+                    a.click();
+                    btn.innerText = txt;
                 });
             }, 100);
         }
 
-        window.switchTab = switchTab; window.addMessage = addMessage;
-        window.activateReactionMode = activateReactionMode; window.deleteMessage = deleteMessage;
         init();
     </script>
 </body>
