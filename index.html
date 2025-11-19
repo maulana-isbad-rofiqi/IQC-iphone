@@ -20,7 +20,7 @@
             --wa-bubble: #202c33;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
 
         body {
             background: #111;
@@ -420,10 +420,12 @@
         /* LONG PRESS EFFECT */
         .wa-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(4px);
+            background: rgba(0,0,0,0.75); /* Darker for download safety */
             opacity: 0; pointer-events: none; transition: opacity 0.2s;
             z-index: 200;
+            /* Backup blur for preview, download will ignore this */
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
         }
         .wa-overlay.active { opacity: 1; pointer-events: auto; }
 
@@ -442,7 +444,7 @@
             display: flex;
             align-items: center;
             padding: 0 6px;
-            gap: 4px;
+            gap: 2px; /* Tweak gap */
             z-index: 202;
             animation: popIn 0.2s cubic-bezier(0.17, 0.84, 0.44, 1);
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -452,10 +454,21 @@
         }
         .reaction-bar::-webkit-scrollbar { display: none; }
 
-        .reaction { min-width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: 0.2s; cursor: pointer; }
-        .reaction img { width: 26px; height: 26px; display: block; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+        /* EMOJI TEXT STYLE FIXED */
+        .reaction { 
+            min-width: 38px; 
+            height: 38px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: 0.2s; 
+            cursor: pointer;
+            font-size: 26px; /* Emoji Size */
+            line-height: 1;
+            user-select: none;
+        }
         .reaction:hover { transform: scale(1.2); }
-        .reaction-more { background: rgba(255,255,255,0.1); border-radius: 50%; width: 32px !important; height: 32px !important; min-width: 32px; margin-left: 2px; }
+        .reaction-more { background: rgba(255,255,255,0.1); border-radius: 50%; width: 32px !important; height: 32px !important; min-width: 32px; margin-left: 4px; }
         .reaction-more svg { width: 20px; height: 20px; opacity: 0.8; }
 
         .ctx-menu {
@@ -1040,7 +1053,7 @@
             });
         }
 
-        // --- LONG PRESS LOGIC ---
+        // --- LONG PRESS LOGIC FIX ---
         function activateReactionMode(id) {
             closeReactionMode(); 
 
@@ -1054,24 +1067,17 @@
             const bubbleHeight = bubble.offsetHeight;
             const isRight = bubble.classList.contains('bubble-right');
 
-            const emojiUrls = {
-                like: 'https://em-content.zobj.net/source/apple/391/thumbs-up_1f44d.png',
-                love: 'https://em-content.zobj.net/source/apple/391/red-heart_2764-fe0f.png',
-                haha: 'https://em-content.zobj.net/source/apple/391/face-with-tears-of-joy_1f602.png',
-                wow:  'https://em-content.zobj.net/source/apple/391/face-with-open-mouth_1f62e.png',
-                sad:  'https://em-content.zobj.net/source/apple/391/crying-face_1f622.png',
-                pray: 'https://em-content.zobj.net/source/apple/391/folded-hands_1f64f.png'
-            };
-
+            // MENGGUNAKAN EMOJI TEXT AGAR PASTI MUNCUL SAAT DOWNLOAD
+            // Ini menyelesaikan masalah CORS dan gambar hilang
             const rBar = document.createElement('div');
             rBar.className = 'reaction-bar temp-ui';
             rBar.innerHTML = `
-                <div class="reaction"><img src="${emojiUrls.like}" alt="like"></div>
-                <div class="reaction"><img src="${emojiUrls.love}" alt="love"></div>
-                <div class="reaction"><img src="${emojiUrls.haha}" alt="haha"></div>
-                <div class="reaction"><img src="${emojiUrls.wow}" alt="wow"></div>
-                <div class="reaction"><img src="${emojiUrls.sad}" alt="sad"></div>
-                <div class="reaction"><img src="${emojiUrls.pray}" alt="pray"></div>
+                <div class="reaction">👍</div>
+                <div class="reaction">❤️</div>
+                <div class="reaction">😂</div>
+                <div class="reaction">😮</div>
+                <div class="reaction">😢</div>
+                <div class="reaction">🙏</div>
                 <div class="reaction reaction-more">
                     <svg viewBox="0 0 24 24" fill="#8e8e93"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
                 </div>
@@ -1119,11 +1125,9 @@
             const btn = document.getElementById('btn-download');
             const originalText = btn.innerHTML;
             
-            // Ubah teks tombol sementara
             btn.innerHTML = 'Generating...';
 
-            // Beri jeda sedikit agar browser merender UI tombol sebelum capture
-            // Kita TIDAK memanggil closeReactionMode() di sini agar efek blur tetap ada
+            // Capture dengan sedikit delay untuk rendering
             setTimeout(() => {
                 captureAndDownload(btn, originalText);
             }, 100);
@@ -1132,20 +1136,22 @@
         function captureAndDownload(btn, originalText) {
             const phoneFrame = document.getElementById('capture-area');
             
+            // Opsi html2canvas disesuaikan untuk stabilitas
             html2canvas(phoneFrame, {
                 scale: 2,
-                backgroundColor: null,
-                useCORS: true,
-                allowTaint: true
+                backgroundColor: null, // Penting agar background tidak putih
+                useCORS: true, // Tetap nyalakan untuk gambar profil dll
+                allowTaint: true,
+                logging: false
             }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = 'IQC-iPhone-' + Date.now() + '.png';
-                link.href = canvas.toDataURL();
+                link.href = canvas.toDataURL("image/png");
                 link.click();
                 btn.innerHTML = originalText;
             }).catch(e => {
                 console.error(e);
-                alert('Error generating image');
+                alert('Error generating image: ' + e.message);
                 btn.innerHTML = originalText;
             });
         }
