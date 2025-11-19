@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQC iPhone Generator Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar Controls -->
+        <aside class="controls">
+            <div class="header-control">
+                <h1>IQC <span>iPhone</span></h1>
+                <p>Generator Mockup Pro</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('lockscreen')">Lock Screen</button>
+                <button class="tab-btn" onclick="switchTab('whatsapp')">WhatsApp</button>
+            </div>
+
+            <!-- Shared Settings -->
+            <div class="panel-section">
+                <h3>Status Bar</h3>
+                <div class="input-row">
+                    <input type="time" id="sys-time" value="09:41">
+                    <div class="battery-control">
+                        <input type="number" id="sys-battery" min="1" max="100" value="100" placeholder="%">
+                        <span>%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme Toggle -->
+             <div class="panel-section">
+                <h3>Tema Tampilan</h3>
+                <select id="sys-theme">
+                    <option value="dark">Mode Gelap (Dark)</option>
+                    <option value="light">Mode Terang (Light)</option>
+                </select>
+            </div>
+
+            <!-- Lock Screen Panel -->
+            <div id="panel-lockscreen" class="panel active">
+                <h3>Konten Lock Screen</h3>
+                <div class="input-group">
+                    <label>Nama</label>
+                    <input type="text" id="ls-operator" value="" placeholder="Masukkan nama Anda">
+                </div>
+                <div class="input-group">
+                    <label>Tanggal</label>
+                    <input type="text" id="ls-date" value="Senin, 1 Januari">
+                </div>
+                
+                <div class="divider"></div>
+                <h3>Wallpaper</h3>
+                <div class="input-group">
+                    <label>Pilih Wallpaper</label>
+                    <select id="ls-wallpaper">
+                        <option value="gradient1">Gradient Biru-Hitam</option>
+                        <option value="gradient2">Gradient Ungu-Pink</option>
+                        <option value="gradient3">Gradient Hijau-Biru</option>
+                        <option value="gradient4">Gradient Oranye-Merah</option>
+                        <option value="custom">Upload Gambar</option>
+                    </select>
+                </div>
+                <div class="input-group" id="wallpaper-upload-group" style="display:none;">
+                    <label>Upload Wallpaper</label>
+                    <input type="file" id="ls-wallpaper-input" accept="image/*">
+                </div>
+                
+                <div class="divider"></div>
+                <h3>Notifikasi</h3>
+                <div class="input-group">
+                    <label>Pengirim</label>
+                    <input type="text" id="ls-sender" value="Sayang">
+                </div>
+                <div class="input-group">
+                    <label>Pesan</label>
+                    <textarea id="ls-message" rows="2">Kangen kamu, jangan lupa makan ya!</textarea>
+                </div>
+                <div class="input-group">
+                    <label>Waktu Notif</label>
+                    <input type="text" id="ls-time-ago" value="Baru saja">
+                </div>
+            </div>
+
+            <!-- WhatsApp Panel -->
+            <div id="panel-whatsapp" class="panel">
+                <h3>Profil Kontak</h3>
+                <div class="input-group">
+                    <label>Nama Kontak</label>
+                    <input type="text" id="wa-name" value="Sayang">
+                </div>
+                <div class="input-group">
+                    <label>Status (Online/Typing)</label>
+                    <input type="text" id="wa-status" value="Online">
+                </div>
+                <div class="input-group">
+                    <label>Foto Profil</label>
+                    <input type="file" id="wa-avatar-input" accept="image/*">
+                </div>
+
+                <div class="divider"></div>
+                <h3>Tambah Chat</h3>
+                <div class="input-group">
+                    <textarea id="wa-input-msg" rows="2" placeholder="Ketik pesan..."></textarea>
+                </div>
+                <div class="input-row">
+                    <input type="time" id="wa-input-time" value="09:41">
+                    <select id="wa-input-pos">
+                        <option value="left">Kiri (Diterima)</option>
+                        <option value="right">Kanan (Terkirim)</option>
+                    </select>
+                </div>
+                <!-- Opsi Centang (Hanya untuk Kanan) -->
+                <div class="input-group" id="wa-check-group" style="display:none;">
+                    <label>Status Centang</label>
+                    <select id="wa-input-check">
+                        <option value="none">Tidak Ada</option>
+                        <option value="sent">Centang 1 (Abu)</option>
+                        <option value="delivered">Centang 2 (Abu)</option>
+                        <option value="read">Centang 2 (Biru)</option>
+                    </select>
+                </div>
+                <button class="btn-add" onclick="addMessage()">Tambah Pesan</button>
+
+                <div class="divider"></div>
+                <h3>Daftar Pesan</h3>
+                <p class="hint">Klik ikon 👆 untuk mengaktifkan efek "Tekan Tahan" (Blur & Reaksi). Klik area blur untuk keluar.</p>
+                <div id="message-list" class="message-list">
+                    <!-- List Item JS -->
+                </div>
+            </div>
+
+            <div class="footer-control">
+                <button id="btn-download" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download Gambar
+                </button>
+                <div class="copyright">&copy; 2025 IQC iPhone - Dibuat oleh 【 𝕀𝕥𝕤𝕓𝕒𝕕 】</div>
+            </div>
+        </aside>
+
+        <!-- Preview Area -->
+        <main class="preview">
+            <div class="phone-frame" id="capture-area">
+
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <div class="time" id="disp-sys-time">09:41</div>
+                    <div class="dynamic-island"></div>
+                    <div class="status-icons">
+                        <svg class="icon-signal" viewBox="0 0 24 24" fill="currentColor"><path d="M17,7H22V20H17V7M10,13H15V20H10V13M3,16H8V20H3V16Z"/></svg>
+                        <svg class="icon-wifi" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+                        </svg>
+                        <div class="battery">
+                            <div class="battery-fill" id="disp-sys-battery" style="width:100%">
+                                <span id="disp-batt-num">100</span>
+                            </div>
+                            <div class="battery-tip"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: Lock Screen -->
+                <div id="view-lockscreen" class="screen-content active" style="background: linear-gradient(180deg, #2c3e50 0%, #000 100%);">
+                    <div class="ls-header">
+                        <div class="ls-date" id="disp-ls-date">Senin, 1 Januari</div>
+                        <div class="ls-clock" id="disp-ls-clock">09:41</div>
+                    </div>
+
+                    <div class="ls-notification">
+                        <div class="notif-top">
+                            <div class="notif-icon notif-icon-whatsapp">
+                                <svg viewBox="0 0 32 32" fill="white">
+                                    <path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.738 5.477 2.028 7.772L.698 30.5l7.033-1.845A15.93 15.93 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333c-2.455 0-4.763-.664-6.745-1.82l-.483-.287-5.01 1.314 1.338-4.888-.315-.5A13.27 13.27 0 012.667 16c0-7.364 5.97-13.333 13.333-13.333S29.333 8.636 29.333 16 23.364 29.333 16 29.333z"/>
+                                    <path d="M23.197 19.803c-.36-.18-2.13-1.05-2.46-1.17-.33-.12-.57-.18-.81.18-.24.36-.93 1.17-1.14 1.41-.21.24-.42.27-.78.09-.36-.18-1.52-.56-2.89-1.78-1.07-.95-1.79-2.13-2-2.49-.21-.36-.02-.55.16-.73.16-.16.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.81-1.95-1.11-2.67-.29-.7-.59-.6-.81-.61-.21-.01-.45-.01-.69-.01-.24 0-.63.09-.96.45-.33.36-1.26 1.23-1.26 3 0 1.77 1.29 3.48 1.47 3.72.18.24 2.54 3.88 6.15 5.44.86.37 1.53.59 2.05.76.86.27 1.65.23 2.27.14.69-.1 2.13-.87 2.43-1.71.3-.84.3-1.56.21-1.71-.09-.15-.33-.24-.69-.42z"/>
+                                </svg>
+                            </div>
+                            <span class="notif-app">WhatsApp</span>
+                            <span class="notif-ago" id="disp-ls-time-ago">Baru saja</span>
+                        </div>
+                        <div class="notif-body">
+                            <strong id="disp-ls-sender">Sayang</strong>
+                            <p id="disp-ls-message">Kangen kamu, jangan lupa makan ya!</p>
+                        </div>
+                    </div>
+
+                    <div class="ls-footer-actions">
+                        <div class="circle-btn">
+                            <svg viewBox="0 0 24 24" fill="white">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zm0 2c2.76 0 5 2.24 5 5 0 1.63-.8 3.16-2.15 4.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5zm-1 15h2v1c0 .55-.45 1-1 1s-1-.45-1-1v-1z"/>
+                            </svg>
+                        </div>
+                        <div class="ls-name-display" id="disp-ls-operator"></div>
+                        <div class="circle-btn">
+                            <svg viewBox="0 0 24 24" fill="white">
+                                <path d="M12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+                                <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="home-bar"></div>
+                </div>
+
+                <!-- VIEW: WhatsApp -->
+                <div id="view-whatsapp" class="screen-content" style="background: #0b141a;">
+                    
+                    <!-- WA Header -->
+                    <div class="wa-header">
+                        <div class="wa-back-btn">
+                            <svg viewBox="0 0 24 24" fill="#0a84ff"><path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/></svg>
+                            <span>9</span>
+                        </div>
+                        <div class="wa-profile">
+                            <div class="wa-pp">
+                                <img id="disp-wa-avatar" src="" style="display:none; width:100%; height:100%; object-fit:cover;">
+                                <div id="disp-wa-avatar-default" class="default-pp">
+                                    <svg viewBox="0 0 24 24" fill="#ccc"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                                </div>
+                            </div>
+                            <div class="wa-info">
+                                <div class="wa-name" id="disp-wa-name">Sayang</div>
+                                <div class="wa-status" id="disp-wa-status">Online</div>
+                            </div>
+                        </div>
+                        <div class="wa-calls">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#0a84ff" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#0a84ff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                    </div>
+
+                    <!-- WA Chat Area -->
+                    <div class="wa-chat-container" id="wa-chat-list">
+                        <!-- Chat bubbles injected here -->
+                    </div>
+
+                    <!-- WA Footer -->
+                    <div class="wa-footer">
+                        <svg class="wa-icon" viewBox="0 0 24 24" fill="none" stroke="#0a84ff" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+                        <div class="wa-input-mock"></div>
+                        <svg class="wa-icon" viewBox="0 0 24 24" fill="none" stroke="#0a84ff" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                        <svg class="wa-icon" viewBox="0 0 24 24" fill="none" stroke="#0a84ff" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    </div>
+
+                    <!-- Home Bar -->
+                    <div class="home-bar"></div>
+
+                    <!-- Overlay for Long Press Effect -->
+                    <div id="wa-overlay" class="wa-overlay"></div>
+
+                </div> <!-- End View Whatsapp -->
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
